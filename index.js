@@ -26,4 +26,4 @@ router.get("/ping", (req, res) => {
 //send ping every 30 seconds
 setInterval(() => {
   Ping();
-}, 2000);
+}, 30000);
