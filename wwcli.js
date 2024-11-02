@@ -20,12 +20,15 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log("Client is ready!");
+  client.sendMessage('916282826684@c.us' , 'Client is ready!');
 });
 
 client.on("message_create", async (msg) => {
   if (msg.body == "#clan") {
     msg.reply("Fetching clan details...");
     await getClanDetails(msg);
+    console.log(msg);
+    
   }
 });
 
