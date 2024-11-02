@@ -1,3 +1,5 @@
+import axios from "axios";
+
 async function Ping() {
   await axios.get(`${process.env.SERVER_URL}/ping`);
 }

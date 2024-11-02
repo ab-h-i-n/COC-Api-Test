@@ -20,10 +20,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/ping", (req, res) => {
-  res.send("pong");
+  console.log("pong");
 });
 
 //send ping every 30 seconds
 setInterval(() => {
   Ping();
-}, 30000);
+}, 2000);
