@@ -1,7 +1,6 @@
-import axios from "axios";
 
 async function Ping() {
-  await axios.get(`${process.env.SERVER_URL}/ping`);
+  await fetch(`${process.env.SERVER_URL}/ping`);
 }
 
 export default Ping;
