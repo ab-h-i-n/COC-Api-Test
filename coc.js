@@ -32,3 +32,6 @@ async function getClanDetails(msg) {
     // client.sendMessage(process.env.ADMIN_CHAT_ID, "Failed to fetch clan details : \n\n" + error);
   }
 }
+
+
+export { getClanDetails };
