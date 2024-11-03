@@ -34,7 +34,3 @@ router.get("/ping", (req, res) => {
   console.log(`Ping : ${ping}`);
   ping++;
 });
-
-setInterval(() => {
-  Ping();
-}, 30000);
