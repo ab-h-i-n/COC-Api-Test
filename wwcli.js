@@ -19,7 +19,10 @@ client.on("qr", (qr) => {
   if (process.env.ENV === "dev") {
     qrcode.generate(qr, { small: true });
   }
-  console.log(qr);
+  const encodedQR = encodeURIComponent(qr);
+  console.log(
+    `https://api.qrserver.com/v1/create-qr-code/?data=${encodedQR}&size=500x500`
+  );
 });
 
 client.on("ready", () => {

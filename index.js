@@ -19,6 +19,13 @@ router.get("/", (req, res) => {
   res.send("Hello Barberiens!");
 });
 
+//clear all cache auth
+
+router.get("/clear", (req, res) => {
+  client.logout();
+  res.send("Auth cleared");
+});
+
 //send ping every 30 seconds
 
 var ping = 0;
