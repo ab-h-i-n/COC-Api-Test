@@ -1,43 +1,18 @@
-import dotenv from "dotenv";
 import express from "express";
-import client from "./wwcli.js";
-import Ping from "./Ping.js";
+import { PORT } from "./utils/env.js";
+import { whatsapp } from "./utils/whatsappConfig.js";
+import ping from "./utils/ping.js";
+import mainRouter from "./routes/index.js";
 
-dotenv.config();
 const app = express();
-const router = express.Router();
 
-app.use("/", router);
-app.use(express.json());
+//initialize whatsapp
+whatsapp.initialize();
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-  client?.initialize();
-
-  setInterval(() => {
-    Ping();
-  }, 30000);
+//start server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+  ping();
 });
 
-router.get("/", (req, res) => {
-  res.send("Hello Barberiens!");
-});
-
-//clear all cache auth
-
-router.get("/clear", (req, res) => {
-  client.logout();
-  res.send("Auth cleared");
-});
-
-//send ping every 30 seconds
-
-var ping = 0;
-
-router.get("/ping", (req, res) => {
-  console.log(`Ping : ${ping}`);
-  res.send("Ping : " + ping);
-  ping++;
-});
+app.use("/api", mainRouter);
