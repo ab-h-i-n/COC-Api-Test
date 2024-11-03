@@ -27,7 +27,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log("Client is ready!");
-  client.sendMessage(process.env.ADMIN_CHAT_ID, "Client is ready!");
+  // client.sendMessage(process.env.ADMIN_CHAT_ID, "Client is ready!");
 });
 
 client.on("message_create", async (msg) => {
