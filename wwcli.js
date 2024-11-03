@@ -6,6 +6,9 @@ dotenv.config();
 
 const { Client, LocalAuth } = wwcli;
 
+console.log(process.env.CLIENT_ID);
+
+
 const client = new Client({
   puppeteer: {
     headless: true,
@@ -24,6 +27,10 @@ client.on("qr", (qr) => {
     `https://api.qrserver.com/v1/create-qr-code/?data=${encodedQR}&size=500x500`
   );
 });
+
+client.on("loading_screen" , () => {
+  console.log("Loading......");
+})
 
 client.on("ready", () => {
   console.log("Client is ready!");
