@@ -1,5 +1,5 @@
 async function pingCall() {
-  await fetch(`${process.env.SERVER_URL}/ping`);
+  await fetch(`${process.env.SERVER_URL}/api/ping`);
 }
 
 async function ping() {
