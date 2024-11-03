@@ -33,7 +33,7 @@ client.on("ready", () => {
 client.on("message_create", async (msg) => {
   if (msg.body == "#clan") {
     msg.reply("Fetching clan details...");
-    await getClanDetails(msg);
+    // await getClanDetails(msg);
   }
 });
 
