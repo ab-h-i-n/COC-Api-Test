@@ -3,6 +3,7 @@ import {
   getWarDetails,
   getWarLeagueDetails,
 } from "./cocFuctions.js";
+import { reply } from "./whatsappConfig.js";
 
 function help(msg) {
   const message = `*Commands:*\n\n#help - Display available commands\n#clan - Get clan details\n#war - Get current war details\n#warleague - Get current war league details`;
