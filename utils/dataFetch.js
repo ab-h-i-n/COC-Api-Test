@@ -12,6 +12,7 @@ async function fetchData(url, errorMessage) {
     });
 
     const result = await response.json();
+    log(result);
 
     if (result?.status !== 200) {
       throw new Error(result?.message);
