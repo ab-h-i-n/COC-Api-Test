@@ -32,5 +32,6 @@ var ping = 0;
 
 router.get("/ping", (req, res) => {
   console.log(`Ping : ${ping}`);
+  res.send("Ping : " + ping);
   ping++;
 });
