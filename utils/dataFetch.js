@@ -11,11 +11,13 @@ async function fetchData(url, errorMessage) {
       },
     });
 
-    if (response?.status !== 200) {
-      throw new Error(response);
+    const result = await response.json();
+
+    if (result?.status !== 200) {
+      throw new Error(result?.message);
     }
 
-    return await response.json();
+    return result;
   } catch (error) {
     console.error(error);
     sendMessage(`${errorMessage}:\n\n${error}`);
