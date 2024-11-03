@@ -3,9 +3,9 @@ async function pingCall() {
 }
 
 async function ping() {
-  setInterval(async () => {
-    await pingCall();
-  }, 30000);
+  // setInterval(async () => {
+  //   await pingCall();
+  // }, 30000);
 }
 
 export default ping;
