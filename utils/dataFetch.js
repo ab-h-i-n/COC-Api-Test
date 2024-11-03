@@ -1,22 +1,18 @@
 import { API_URL, COC_TOKEN } from "./env.js";
+import log from "./log.js";
 import { reply, sendMessage } from "./whatsappConfig.js";
 
 async function fetchData(url, errorMessage) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 60000); // 1 minute timeout
-
   try {
+
     const response = await fetch(API_URL + url, {
       headers: {
         Authorization: `Bearer ${COC_TOKEN}`,
       },
-      signal: controller.signal,
     });
 
-    clearTimeout(timeoutId);
-
-    if (response.status !== 200) {
-      throw new Error(response.statusText);
+    if (response?.status !== 200) {
+      throw new Error(response);
     }
 
     return await response.json();
