@@ -8,17 +8,18 @@ const { Client, LocalAuth } = wwcli;
 
 console.log(process.env.CLIENT_ID);
 
-
 const client = new Client({
   puppeteer: {
     headless: true,
   },
-  authStrategy: new LocalAuth({
-    clientId: process.env.CLIENT_ID,
-  }),
+  // authStrategy: new LocalAuth({
+  //   clientId: process.env.CLIENT_ID,
+  // }),
 });
 
 client.on("qr", (qr) => {
+  console.log("QR loading....");
+
   if (process.env.ENV === "dev") {
     qrcode.generate(qr, { small: true });
   }
@@ -28,9 +29,9 @@ client.on("qr", (qr) => {
   );
 });
 
-client.on("loading_screen" , () => {
+client.on("loading_screen", () => {
   console.log("Loading......");
-})
+});
 
 client.on("ready", () => {
   console.log("Client is ready!");
