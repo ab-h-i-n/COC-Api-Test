@@ -1,6 +1,8 @@
 import wwcli from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
 import { getClanDetails } from "./coc.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const { Client, LocalAuth } = wwcli;
 
@@ -14,21 +16,21 @@ const client = new Client({
 });
 
 client.on("qr", (qr) => {
-  qrcode.generate(qr, { small: true });
-  console.log("QR Received" , qr);
+  if (process.env.ENV === "dev") {
+    qrcode.generate(qr, { small: true });
+  }
+  console.log(qr);
 });
 
 client.on("ready", () => {
   console.log("Client is ready!");
-  client.sendMessage('916282826684@c.us' , 'Client is ready!');
+  client.sendMessage(process.env.ADMIN_CHAT_ID, "Client is ready!");
 });
 
 client.on("message_create", async (msg) => {
   if (msg.body == "#clan") {
     msg.reply("Fetching clan details...");
     await getClanDetails(msg);
-    console.log(msg);
-    
   }
 });
 

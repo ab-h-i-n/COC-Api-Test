@@ -3,19 +3,19 @@ import axios from "axios";
 async function getClanDetails(msg) {
   try {
     await axios
-      .get(`${process.env.API_URL}/clans/%232G00R8P0G`, {
+      .get(`${process.env.API_URL}/clans/%${process.env.CLAN_TAG}`, {
         headers: {
           Authorization: `Bearer ${process.env.COC_TOKEN}`,
         },
       })
       .then((response) => {
-        console.log(response);
+        console.log("Clan details fetched");
         const clanDetails = response.data;
-        msg.reply("Clan Name: " + clanDetails.name);
+        msg.reply("*Clan Name:* " + clanDetails.name);
         const clanMembers = clanDetails?.memberList.map((member) => {
           return member.name;
         });
-        const message = "Clan Members : \n" + clanMembers.join("\n");
+        const message = "*Clan Members :* \n\n" + clanMembers.join("\n");
         msg.reply(message);
       })
       .catch((error) => {

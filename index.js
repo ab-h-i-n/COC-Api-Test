@@ -19,11 +19,15 @@ router.get("/", (req, res) => {
   res.send("Hello Barberiens!");
 });
 
+//send ping every 30 seconds
+
+var ping = 0;
+
 router.get("/ping", (req, res) => {
-  console.log("pong");
+  console.log(`Ping : ${ping}`);
+  ping++;
 });
 
-//send ping every 30 seconds
 setInterval(() => {
   Ping();
 }, 30000);
